@@ -28,27 +28,15 @@ class _HomeState extends State<Home> {
       buildWhen: (previous, current) => current is! HomeActionState,
       listener: (context, state) {
         if (state is HomeNavigateToCartPageActionState) {
+          print('hellp');
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => Cart()));
         } else if (state is HomeNavigateToWishlistPageActionState) {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Wishlist()));
-        } else if (state is HomeProductItemWishlistedActionState) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              duration: Duration(milliseconds: 500),
-              backgroundColor: Colors.green,
-              content: Text('Item wishlisted Succesfully'),
-            ),
-          );
+         Navigator.push(context, MaterialPageRoute(builder: (context)=>Wishlist()));
+        } else if(state is HomeProductItemWishlistedActionState){
+          print('HEllo wishlist');
         } else if (state is HomeProductItemCartedActionState) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              backgroundColor: Colors.teal.shade300,
-              duration: Duration(milliseconds: 500),
-              content: Text('Item added in cart succesfully'),
-            ),
-          );
+         print('Hello cart');
         }
       },
       //tab call hoega jab buildwhen hoega tabhi builder call hoega that is! HomeActionState
@@ -69,7 +57,7 @@ class _HomeState extends State<Home> {
                 iconTheme: IconThemeData(color: Colors.white),
                 backgroundColor: Colors.teal.shade500,
                 title: Text(
-                  'Pick&Go',
+                  'GrocerEase',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -103,7 +91,7 @@ class _HomeState extends State<Home> {
                     itemBuilder: (context, index) {
                       return ProductTileWidget(
                         productDataModel: successState.products[index],
-                        homeBloc: homeBloc,
+                        //homeBloc: homeBloc,
                       );
                     }),
               ),

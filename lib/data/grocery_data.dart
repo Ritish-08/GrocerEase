@@ -14,7 +14,7 @@ class GroceryData {
       'name': 'Whole Grain Bread',
       'category': 'Bakery',
       'price': 55,
-      'description': 'Packed with fiber and essential nutrients.',
+      'description': 'Packed with fiber',
       'imageUrl':
           'https://sallysbakingaddiction.com/wp-content/uploads/2024/01/whole-wheat-sandwich-bread-2.jpg',
     },
@@ -41,7 +41,7 @@ class GroceryData {
       'name': 'Ground Coffee',
       'category': 'Beverages',
       'price': 120,
-      'description': 'Sourced from premium beans for a rich and aromatic cup.',
+      'description': 'Sourced from premium beans ',
       'imageUrl':
           'https://somethingsbrewing.in/cdn/shop/articles/Blog_Banner_new_ground_coffee_2.png?v=1616682720',
     },

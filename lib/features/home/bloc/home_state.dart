@@ -6,7 +6,7 @@ sealed class HomeState {}
 final class HomeInitial extends HomeState {}
 //yahan tak phela se
 
-//actionable state rebuilds with changes like clicking on wishlist navigates to other pages, ye khud linkhi hai
+//actionable state rebuilds with changes like clicking on wishlist navigates to other pages
 abstract class HomeActionState extends HomeState {}
 
 //showing circular progress indicator while data fetched from api for home screen and it is ui building so home state

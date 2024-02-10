@@ -2,7 +2,7 @@ part of 'cart_bloc.dart';
 
 @immutable
 sealed class CartEvent {}
-
+//yahan tak phrla se
 class CartInitialEvent extends CartEvent {}
 
 class CartRemoveFromCartEvent extends CartEvent {

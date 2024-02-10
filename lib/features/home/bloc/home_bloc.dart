@@ -22,7 +22,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   FutureOr<void> homeInitialEvent(
       HomeInitialEvent event, Emitter<HomeState> emit) async {
     emit(HomeLoadingState());
-    //purposely added as we are not fetching data from database so to show loading state used it.
     await Future.delayed(Duration(seconds: 2));
     try {
       emit(
@@ -47,27 +46,27 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> homeProductWishlistButtonClickedEvent(
       HomeProductWishlistButtonClickedEvent event, Emitter<HomeState> emit) {
-    print('Wishlist Product clicked');
     wishlistItems.add(event.clickedProduct);
     emit(HomeProductItemWishlistedActionState());
   }
 
   FutureOr<void> homeProductCartButtonClickedEvent(
       HomeProductCartButtonClickedEvent event, Emitter<HomeState> emit) {
-    print('Cart Product clicked');
     cartItems.add(event.clickedProduct);
     emit(HomeProductItemCartedActionState());
   }
 
-  FutureOr<void> homeWishlistButtonNavigateEvent(
-      HomeWishlistButtonNavigateEvent event, Emitter<HomeState> emit) {
-    print('Wishlist Navigate clicked');
-    emit(HomeNavigateToWishlistPageActionState());
-  }
+
 
   FutureOr<void> homeCartButtonNavigateEvent(
       HomeCartButtonNavigateEvent event, Emitter<HomeState> emit) {
     print('Cart clicked');
     emit(HomeNavigateToCartPageActionState());
+  }
+
+  FutureOr<void> homeWishlistButtonNavigateEvent(HomeWishlistButtonNavigateEvent event, Emitter<HomeState> emit) {
+      print('Wishlist Navigate clicked');
+      emit(HomeNavigateToWishlistPageActionState());
+
   }
 }

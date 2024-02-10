@@ -5,20 +5,22 @@ import 'package:grocery/features/home/models/home_product_data_model.dart';
 class ProductTileWidget extends StatefulWidget {
   final ProductDataModel productDataModel;
   const ProductTileWidget(
-      {super.key, required this.productDataModel, required this.homeBloc});
-  final HomeBloc homeBloc;
+      {super.key, required this.productDataModel});
+
 
   @override
   State<ProductTileWidget> createState() => _ProductTileWidgetState();
 }
 
 class _ProductTileWidgetState extends State<ProductTileWidget> {
+  HomeBloc homeBloc = HomeBloc();
   bool forIcon = false;
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.blueGrey.withOpacity(.2),
+        border: Border.all(color: Colors.black),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         // border: Border.all(
         //   color: Colors.black.withOpacity(.4),
@@ -63,20 +65,34 @@ class _ProductTileWidgetState extends State<ProductTileWidget> {
               children: [
                 IconButton(
                   onPressed: () {
-                    widget.homeBloc.add(HomeProductWishlistButtonClickedEvent(
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: Colors.teal.shade300,
+                        duration: Duration(milliseconds: 500),
+                        content: Text('Item added in cart succesfully'),
+                      ),
+                    );
+                    homeBloc.add(HomeProductWishlistButtonClickedEvent(
                         clickedProduct: widget.productDataModel));
                     setState(() {
                       forIcon = !forIcon;
                     });
-                  },
+                   },
                   icon: Icon(
-                    Icons.favorite,
-                    color: forIcon ? Colors.red.shade500 : Colors.white,
+                    Icons.favorite_border,
+                    color: forIcon ? Colors.red.shade500 : Colors.black,
                   ),
                 ),
                 IconButton(
                   onPressed: () {
-                    widget.homeBloc.add(HomeProductCartButtonClickedEvent(
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        duration: Duration(milliseconds: 500),
+                        backgroundColor: Colors.green,
+                        content: Text('Item wishlisted Succesfully'),
+                      ),
+                    );
+                    homeBloc.add(HomeProductCartButtonClickedEvent(
                       clickedProduct: widget.productDataModel,
                     ));
                   },
